@@ -1,0 +1,60 @@
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.guestBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 20px 20px 0;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(236, 98, 95, 0.25);
+  background: rgba(236, 98, 95, 0.06);
+  color: #c0a0a0;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.guestBannerActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.guestBannerLogin,
+.guestBannerRegister {
+  padding: 5px 14px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #bdbdbd;
+  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.guestBannerLogin:hover,
+.guestBannerRegister:hover {
+  border-color: rgba(236, 98, 95, 0.5);
+  color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(236, 98, 95, 0.1);
+}
+
+html, body {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(
+    to bottom,
+    #1e1e1e 0%,
+    #0a0a09 100%
+  );
+  background-attachment: fixed;
+}
+

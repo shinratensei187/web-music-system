@@ -1,0 +1,1034 @@
+/* =========================================
+   1. БАЗОВЫЕ СТИЛИ И ЛЕЙАУТ
+   ========================================= */
+
+.adminPage {
+  position: relative;
+  z-index: 0;
+
+  min-height: 100vh;
+  width: 100vw;
+
+  color: white;
+  padding: 34px 0 60px;
+
+  overflow-x: hidden;
+}
+
+.adminPage::before {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  background: linear-gradient(
+    180deg,
+    #1e1e1e 0%,
+    #151515 35%,
+    #0b0b0b 70%,
+    #050505 100%
+  );
+
+  z-index: -1;
+  pointer-events: none;
+}
+
+.adminContainer {
+  position: relative;
+  z-index: 1;
+
+  width: 1440px;
+  max-width: calc(100% - 40px);
+  margin: 0 auto;
+}
+
+.adminLayout {
+  display: grid;
+  /* Было: 0.95fr 1.05fr */
+  grid-template-columns: 1.9fr 1.05fr; 
+  gap: 24px;
+  margin-top: 24px;
+
+  align-items: stretch;
+}
+
+
+.adminHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 24px 28px;
+  border: 1px solid #242424;
+  border-radius: 22px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(38, 37, 37, 0.96),
+    rgba(14, 14, 14, 0.98)
+  );
+
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+}
+
+.adminSubtitle {
+  color: #ec625f;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.adminTitle {
+  font-size: 34px;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+
+/* =========================================
+   2. ОСНОВНЫЕ СЕКЦИИ
+   ========================================= */
+
+.adminForm,
+.adminTrackList,
+.adminUsersSection,
+.adminStatsSection {
+  border: 1px solid #242424;
+  border-radius: 22px;
+  background: #111111;
+  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.35);
+}
+
+.adminForm {
+  padding: 26px;
+  align-self: start;
+}
+
+.adminTrackListWrapper {
+  position: relative;
+  align-self: stretch;
+  min-height: 0;
+}
+
+.adminTrackList {
+  position: absolute;
+  inset: 0;
+
+  padding: 22px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+.adminUsersSection,
+.adminStatsSection {
+  margin-top: 24px;
+  padding: 22px;
+}
+
+.adminFormHeader {
+  margin-bottom: 22px;
+}
+
+.adminFormHeader h2,
+.adminListHeader h2 {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.adminFormHeader p {
+  margin-top: 8px;
+  color: #a9a9a9;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.adminListHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 18px;
+  border-bottom: 1px solid #252525;
+  margin-bottom: 14px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================
+   3. ФОРМА
+   ========================================= */
+
+.adminField {
+  margin-top: 16px;
+}
+
+.adminField label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+
+  color: #d8d8d8;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.adminCharCount {
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+  transition: color 0.2s ease;
+}
+
+.adminCharCountWarn {
+  color: #ec625f;
+}
+
+.adminField input,
+.adminSelect {
+  width: 100%;
+  height: 44px;
+
+  padding: 0 14px;
+  border-radius: 14px;
+  border: 1px solid #333;
+
+  background: #1a1a1a;
+  color: white;
+
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.adminField input:focus,
+.adminSelect:focus {
+  border-color: #ec625f;
+  box-shadow: 0 0 0 3px rgba(236, 98, 95, 0.14);
+}
+
+.adminSelect {
+  cursor: pointer;
+}
+
+.adminTextarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1.5px solid #2e2e2e;
+  background: #1e1e1e;
+  color: #e0e0e0;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  outline: none;
+  transition: 0.2s ease;
+  line-height: 1.6;
+}
+
+.adminTextarea:focus {
+  border-color: #ec625f;
+  box-shadow: 0 0 0 3px rgba(236, 98, 95, 0.14);
+}
+
+.adminTextarea::placeholder {
+  color: #555;
+}
+
+.adminFieldsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.adminFormActions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.adminMoodList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.adminMoodBtn {
+  padding: 9px 14px;
+
+  border-radius: 20px;
+  border: 1px solid #3b3b3b;
+
+  background: #1b1b1b;
+  color: #dcdcdc;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.adminMoodBtn:hover {
+  border-color: #ec625f;
+  transform: translateY(-1px);
+}
+
+.adminMoodBtnActive {
+  border-color: #ec625f;
+  background: #ec625f;
+  color: white;
+
+  box-shadow: 0 0 14px rgba(236, 98, 95, 0.35);
+}
+
+.adminFilesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.adminFileBox {
+  min-height: 96px;
+
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px dashed #444;
+
+  background: #181818;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+
+  transition: 0.2s ease;
+}
+
+.adminFileBox:hover {
+  border-color: #ec625f;
+  background: #202020;
+}
+
+.adminFileBox span {
+  color: #eeeeee;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.adminFileBox input {
+  max-width: 100%;
+  color: #bfbfbf;
+  font-size: 13px;
+}
+
+.adminFileBox input::file-selector-button {
+  margin-right: 10px;
+  padding: 7px 11px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: #ec625f;
+  color: white;
+
+  cursor: pointer;
+}
+
+
+/* =========================================
+   4. СПИСОК ТРЕКОВ
+   ========================================= */
+
+.adminTrackScroll {
+  flex: 1;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding-right: 10px;
+  min-height: 0;
+}
+
+.adminTrackScroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.adminTrackScroll::-webkit-scrollbar-track {
+  background: #151515;
+  border-radius: 10px;
+}
+
+.adminTrackScroll::-webkit-scrollbar-thumb {
+  background: #ec625f;
+  border-radius: 10px;
+}
+
+.adminTrackScroll::-webkit-scrollbar-thumb:hover {
+  background: #ff6b68;
+}
+
+.adminTrackItem {
+  width: 100%;
+  max-width: 100%;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  column-gap: 14px;
+  row-gap: 8px;
+
+  padding: 16px;
+  margin-top: 12px;
+
+  border: 1px solid #292929;
+  border-radius: 18px;
+
+  background: #181818;
+  transition: 0.25s ease;
+
+  overflow: hidden;
+}
+
+.adminTrackItem:hover {
+  transform: translateY(-2px);
+  background: #222222;
+  border-color: #3a3a3a;
+}
+
+.adminTrackInfo {
+  min-width: 0;
+  overflow: hidden;
+  align-self: center;
+}
+
+.adminTrackInfo h3 {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.adminTrackMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.adminTrackMeta span {
+  max-width: 120px;
+
+  padding: 5px 9px;
+  border-radius: 14px;
+
+  background: #292929;
+  color: #cfcfcf;
+
+  font-size: 13px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.adminTrackActions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.adminTrackTitleRow {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.adminTrackTitleRow h3 {
+  margin-bottom: 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.adminTrackTitleLink {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.adminTrackTitleLink:hover {
+  color: #ec625f;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.adminSoldBadge {
+  flex-shrink: 0;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: rgba(236, 98, 95, 0.18);
+  color: #ec625f;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid rgba(236, 98, 95, 0.4);
+}
+
+.adminAvailableBadge {
+  flex-shrink: 0;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: rgba(80, 200, 120, 0.15);
+  color: #50c878;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid rgba(80, 200, 120, 0.4);
+}
+
+.adminTrackSold {
+  opacity: 0.75;
+  border-color: rgba(236, 98, 95, 0.25);
+}
+
+.adminTrackBuyer {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #a9a9a9;
+}
+
+.adminTrackBuyer strong {
+  color: #e0e0e0;
+}
+
+.adminTrackBuyerEmail {
+  color: #777;
+}
+
+
+/* =========================================
+   5. СТАТИСТИКА
+   ========================================= */
+
+.adminStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.adminStatCard {
+  min-height: 120px;
+
+  padding: 20px;
+  border-radius: 18px;
+  border: 1px solid #292929;
+
+  background: linear-gradient(145deg, #181818, #101010);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transition: 0.25s ease;
+}
+
+.adminStatCard:hover {
+  transform: translateY(-2px);
+  border-color: #ec625f;
+  box-shadow: 0 0 18px rgba(236, 98, 95, 0.15);
+}
+
+.adminStatCard span {
+  color: #a9a9a9;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.adminStatCard strong {
+  color: white;
+  font-size: 32px;
+  font-weight: 900;
+}
+
+.adminTopTracks {
+  margin-top: 24px;
+}
+
+.adminTopTracksHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.adminTopTracksHeader h3 {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.adminPeriodTabs {
+  display: flex;
+  gap: 6px;
+}
+
+.adminPeriodTab {
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 16px;
+  border: 1px solid #333;
+  background: #1b1b1b;
+  color: #aaa;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.adminPeriodTab:hover {
+  border-color: #ec625f;
+  color: #ec625f;
+}
+
+.adminPeriodTabActive {
+  background: #ec625f;
+  border-color: #ec625f;
+  color: white;
+  box-shadow: 0 0 12px rgba(236, 98, 95, 0.3);
+}
+
+.adminTopTrackItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding: 15px;
+  margin-top: 10px;
+
+  border: 1px solid #292929;
+  border-radius: 18px;
+
+  background: #181818;
+  transition: 0.25s ease;
+}
+
+.adminTopTrackItem:hover {
+  transform: translateY(-2px);
+  background: #222222;
+  border-color: #3a3a3a;
+}
+
+.adminTopTrackLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.adminTopTrackPlace {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: #ec625f;
+
+  color: white;
+  font-size: 15px;
+  font-weight: 900;
+
+  flex-shrink: 0;
+}
+
+.adminTopTrackLeft h4 {
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.adminTopTrackLeft p {
+  color: #a9a9a9;
+  font-size: 13px;
+}
+
+.adminTopTrackRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.adminTopTrackRight span {
+  padding: 6px 10px;
+
+  border-radius: 14px;
+  background: #292929;
+
+  color: #cfcfcf;
+  font-size: 13px;
+}
+
+.adminTopTrackRight strong {
+  color: #ec625f;
+  font-size: 17px;
+}
+
+
+/* =========================================
+   6. ПОЛЬЗОВАТЕЛИ
+   ========================================= */
+
+.adminUsersTable {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.adminUserItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding: 16px;
+
+  border: 1px solid #292929;
+  border-radius: 18px;
+
+  background: #181818;
+  transition: 0.25s ease;
+}
+
+.adminUserItem:hover {
+  transform: translateY(-2px);
+  background: #222222;
+  border-color: #3a3a3a;
+}
+
+.adminSearchBox {
+  margin-bottom: 12px;
+}
+
+.adminSearchInput {
+  width: 100%;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid #2e2e2e;
+  background: #161616;
+  color: white;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.adminSearchInput::placeholder {
+  color: #555;
+}
+
+.adminSearchInput:focus {
+  border-color: #ec625f;
+  box-shadow: 0 0 0 3px rgba(236, 98, 95, 0.12);
+}
+
+.adminUserInfo {
+  min-width: 0;
+}
+
+.adminUserNameRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.adminUserNameRow h3 {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.adminLastSeenBadge {
+  flex-shrink: 0;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: #1e1e1e;
+  color: #777;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid #2e2e2e;
+}
+
+.adminUserInfo h3 {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.adminUserMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.adminUserMeta span {
+  padding: 5px 9px;
+
+  border-radius: 14px;
+  background: #292929;
+
+  color: #cfcfcf;
+  font-size: 13px;
+}
+
+.adminUserMeta .userActive {
+  background: rgba(80, 200, 120, 0.15);
+  color: #50c878;
+}
+
+.adminUserMeta .userBlocked {
+  background: rgba(236, 98, 95, 0.18);
+  color: #ec625f;
+}
+
+.adminUserActions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+
+/* =========================================
+   7. КНОПКИ
+   ========================================= */
+
+.adminEditBtn,
+.adminDeleteBtn,
+.adminBlockBtn,
+.adminUnblockBtn {
+  height: 36px;
+  padding: 0 12px;
+
+  border-radius: 18px;
+
+  color: white;
+  font-weight: 700;
+  white-space: nowrap;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.adminEditBtn {
+  background: #2b2b2b;
+  border: 1px solid #555;
+}
+
+.adminEditBtn:hover {
+  border-color: #ec625f;
+  transform: translateY(-1px);
+}
+
+.adminDeleteBtn,
+.adminBlockBtn {
+  background: rgba(236, 98, 95, 0.18);
+  border: 1px solid rgba(236, 98, 95, 0.6);
+}
+
+.adminDeleteBtn:hover,
+.adminBlockBtn:hover {
+  background: #ec625f;
+  transform: translateY(-1px);
+}
+
+.adminUnblockBtn {
+  background: rgba(80, 200, 120, 0.15);
+  border: 1px solid rgba(80, 200, 120, 0.6);
+}
+
+.adminUnblockBtn:hover {
+  background: #50c878;
+  transform: translateY(-1px);
+}
+
+.adminUserActions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.adminLogoutBtn {
+  min-width: 110px;
+  height: 42px;
+
+  border-radius: 22px;
+  border: 1px solid transparent;
+
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+
+  background:
+    linear-gradient(#181818, #181818) padding-box,
+    linear-gradient(90deg, #ffffff 0%, #ec625f 100%) border-box;
+
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.adminLogoutBtn:hover {
+  transform: translateY(-2px);
+
+  background:
+    linear-gradient(#2b2b2b, #2b2b2b) padding-box,
+    linear-gradient(90deg, #ffffff 0%, #ff5f5f 100%) border-box;
+
+  box-shadow: 0 0 16px rgba(236, 98, 95, 0.25);
+}
+
+.adminCancelBtn {
+  height: 40px;
+  padding: 0 18px;
+
+  border-radius: 20px;
+  border: 1px solid #444;
+
+  background: transparent;
+  color: #dcdcdc;
+
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.adminCancelBtn:hover {
+  border-color: #ec625f;
+  color: white;
+}
+
+
+/* =========================================
+   8. ОБЩИЕ МЕЛКИЕ ЭЛЕМЕНТЫ
+   ========================================= */
+
+.adminCounter {
+  min-width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: #ec625f;
+
+  font-size: 17px;
+  font-weight: 800;
+
+  flex-shrink: 0;
+}
+
+.adminEmpty {
+  padding: 30px;
+
+  border-radius: 16px;
+  background: #181818;
+
+  color: #9f9f9f;
+  text-align: center;
+}
+
+
+/* =========================================
+   9. АДАПТИВ
+   ========================================= */
+
+@media (max-width: 1100px) {
+  .adminLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .adminTrackListWrapper {
+    height: 600px;
+  }
+}
+
+@media (max-width: 900px) {
+  .adminTrackItem {
+    grid-template-columns: 1fr;
+  }
+
+  .adminTrackActions {
+    width: 100%;
+  }
+
+  .adminEditBtn,
+  .adminDeleteBtn {
+    flex: 1;
+  }
+}
+
+@media (max-width: 800px) {
+  .adminStatsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .adminTopTrackItem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .adminTopTrackRight {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 720px) {
+  .adminHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .adminTitle {
+    font-size: 28px;
+  }
+
+  .adminFieldsGrid,
+  .adminFilesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .adminUserItem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .adminUserActions {
+    width: 100%;
+  }
+
+  .adminEditBtn,
+  .adminDeleteBtn,
+  .adminBlockBtn,
+  .adminUnblockBtn,
+  .adminUserActions .adminDeleteBtn {
+    width: 100%;
+  }
+}

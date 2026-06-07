@@ -1,0 +1,19 @@
+.myBtn {
+  width: 100%;
+  height: 34px;
+  margin-top: 8px;
+  border-radius: 18px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  color: #9e9e9e;
+  background:
+    linear-gradient(#313131, #313131) padding-box,
+    linear-gradient(90deg, #ffffff 0%, #ec625f 100%) border-box;
+}
+
+.myBtn:hover {
+  color: white;
+  background:
+    linear-gradient(#3a3a3a, #3a3a3a) padding-box,
+    linear-gradient(90deg, #ffffff 0%, #ff5f5f 100%) border-box;
+}

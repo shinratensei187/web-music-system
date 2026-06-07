@@ -1,0 +1,468 @@
+/* ================================
+   HOME PAGE
+   ================================ */
+
+.homePage {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-bottom: 70px;
+}
+
+/* ---- Hero ---- */
+
+.homeHero {
+  display: flex;
+  flex-direction: column;
+  padding: 60px 20px 80px;
+}
+
+.heroTitle {
+  width: 100%;
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #ec625f;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.heroContent {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  /* ↓ Відстань між описом автора та картинкою */
+  gap: 42px;
+}
+
+.heroLeft {
+  flex: 0 1 580px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.heroDesc {
+  color: #c0c0c0;
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 12px;
+  max-width: 520px;
+}
+
+.heroBtns {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.heroCta {
+  display: inline-block;
+  padding: 13px 32px;
+  border-radius: 22px;
+  cursor: pointer;
+
+  background: linear-gradient(#2b2b2b, #2b2b2b) padding-box,
+              linear-gradient(90deg, #ffffff 0%, #ec625f 100%) border-box;
+  border: 1px solid transparent;
+
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.heroCtaSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 13px 24px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: transparent;
+  color: #c0c0c0;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.heroCtaSecondary:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.heroCta:hover {
+  background: linear-gradient(#3a3a3a, #3a3a3a) padding-box,
+              linear-gradient(90deg, #ffffff 0%, #ff5f5f 100%) border-box;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(236, 98, 95, 0.3);
+}
+
+.heroRight {
+  flex-shrink: 0;
+  width: 508px;
+  height: 621px;
+}
+
+.heroPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 22px;
+  display: block;
+}
+
+/* ---- Section Layout ---- */
+
+.homeSection {
+  padding: 36px 20px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.sectionTitle {
+  color: #ffffff;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.sectionAllLink {
+  color: #ec625f;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.sectionAllLink:hover {
+  color: #ff7a77;
+}
+
+/* ---- Genre Grid ---- */
+
+.genreGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+
+.genreCard {
+  position: relative;
+  height: 145px;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #1c1c1c;
+  border: 1px solid #2a2a2a;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.genreCard:hover {
+  transform: translateY(-5px);
+  border-color: var(--genreAccent, #ec625f);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+.genreCardBg {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.22s ease;
+}
+
+.genreCard:hover .genreCardBg {
+  opacity: 1.4;
+}
+
+.genreCardName {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--genreAccent, #ec625f);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  z-index: 1;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.55);
+  white-space: nowrap;
+}
+
+/* ---- Track sections (full-width grid like catalogue) ---- */
+
+.homeTrackSection {
+  padding: 36px 0;
+}
+
+.homeTrackSection .sectionHeader {
+  padding: 0 20px;
+  margin-bottom: 18px;
+}
+
+.homeTrackSection .trackGrid {
+  padding: 0 20px;
+  max-width: 100%;
+}
+
+/* ---- Subscribe Section ---- */
+
+.subscribeSection {
+  margin: 10px 20px 0;
+  padding: 50px 40px;
+  border-radius: 20px;
+  background: #191919;
+  border: 1px solid #282828;
+  text-align: center;
+}
+
+.subscribeText {
+  color: #bdbdbd;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 22px;
+}
+
+.subscribeForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.subscribeInput {
+  flex: 1;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 20px;
+  border: 1px solid #333;
+  background: #111;
+  color: #ffffff;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.subscribeInput:focus {
+  border-color: rgba(236, 98, 95, 0.45);
+}
+
+.subscribeInput::placeholder {
+  color: #555;
+}
+
+.subscribeBtn {
+  height: 40px;
+  padding: 0 22px;
+  border-radius: 20px;
+  border: 1px solid transparent;
+
+  background: linear-gradient(#2b2b2b, #2b2b2b) padding-box,
+              linear-gradient(90deg, #ffffff 0%, #ec625f 100%) border-box;
+
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+.subscribeBtn:hover {
+  background: linear-gradient(#3a3a3a, #3a3a3a) padding-box,
+              linear-gradient(90deg, #ffffff 0%, #ff5f5f 100%) border-box;
+}
+
+/* ---- Platform Overlay ---- */
+
+.platformOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: overlayIn 0.2s ease;
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.platformModal {
+  position: relative;
+  background: #181818;
+  border: 1px solid #2a2a2a;
+  border-radius: 20px;
+  padding: 36px 32px 32px;
+  width: 340px;
+  animation: modalIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.9) translateY(12px); }
+  to   { opacity: 1; transform: scale(1)   translateY(0);    }
+}
+
+.platformClose {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  color: #555;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  line-height: 1;
+  padding: 4px;
+}
+
+.platformClose:hover {
+  color: #ffffff;
+}
+
+.platformModalTitle {
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.platformList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.platformBtn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #252525;
+  background: #111;
+  color: #e0e0e0;
+  text-decoration: none;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+.platformBtn:hover {
+  background: #1c1c1c;
+  border-color: #3a3a3a;
+  transform: translateX(4px);
+}
+
+.platformIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.platformName {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.platformArrow {
+  color: #444;
+  font-size: 16px;
+  transition: color 0.18s ease;
+}
+
+.platformBtn:hover .platformArrow {
+  color: #888;
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+
+@media (max-width: 1100px) {
+  .genreGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .heroRight {
+    width: 310px;
+    height: 379px;
+  }
+
+  .heroTitle {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 760px) {
+  .homeHero {
+    padding: 36px 20px 48px;
+  }
+
+  .heroTitle {
+    font-size: 26px;
+    margin-bottom: 28px;
+  }
+
+  .heroContent {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .heroLeft {
+    max-width: 100%;
+  }
+
+  .heroRight {
+    width: 100%;
+    max-width: 280px;
+    height: 342px;
+    margin: 0 auto;
+  }
+
+  .subscribeSection {
+    padding: 36px 20px;
+  }
+
+  .genreGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 22px;
+  }
+
+  .genreGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .genreCardName {
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+}

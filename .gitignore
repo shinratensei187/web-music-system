@@ -1,0 +1,42 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# Environment — NEVER commit real values
+.env
+.env.*
+!.env.example
+
+# Runtime uploads (audio, images uploaded by users)
+music_backend/uploads/
+
+# Local database files
+*.db
+*.sqlite3
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Node (also covered by three/.gitignore)
+node_modules/
+
+# React production build
+three/build/
+
+# Scratch / notes files
+music_backend/everything.txt

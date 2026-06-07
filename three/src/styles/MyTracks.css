@@ -1,0 +1,506 @@
+.myTracksPage {
+  display: flex;
+  gap: 6px; /* як у каталозі */
+
+  width: 100%;
+  max-width: 1440px;
+
+  margin: 40px auto 0;
+  padding: 0 20px 40px;
+
+  align-items: flex-start;
+}
+
+.profileCard {
+  width: 220px;
+
+  background: #2b2b2b;
+  border-radius: 16px;
+
+  padding: 24px 15px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  flex-shrink: 0;
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.profileCard:hover {
+  transform: translateY(-3px);
+  background: #333333;
+}
+
+.profileAvatar {
+  width: 105px;
+  height: 105px;
+
+  border-radius: 50%;
+  object-fit: cover;
+
+  margin-bottom: 18px;
+}
+
+.profileName {
+  color: white;
+
+  font-size: 26px;
+  font-weight: 600;
+
+  margin-bottom: 22px;
+  text-align: center;
+  word-break: break-word;
+}
+
+.profileButton {
+  width: 100%;
+  height: 42px;
+
+  border-radius: 22px;
+  border: 1px solid transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  color: white;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+
+  background:
+    linear-gradient(#2b2b2b, #2b2b2b) padding-box,
+    linear-gradient(90deg, #ffffff 0%, #ec625f 100%) border-box;
+
+  transition: 0.25s ease;
+}
+
+.profileButton:hover {
+  background:
+    linear-gradient(#3a3a3a, #3a3a3a) padding-box,
+    linear-gradient(90deg, #ffffff 0%, #ff5f5f 100%) border-box;
+}
+
+.purchasesSection {
+  flex: 1;
+  min-width: 0;
+}
+
+.purchaseTitle {
+  color: white;
+
+  font-size: 28px;
+  font-weight: 700;
+
+  margin-bottom: 25px;
+  padding-left: 10px;
+}
+.emptyTracks {
+  color: #999;
+  padding-left: 20px;
+}
+
+.trackGridMyTracks {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  width: 100%;
+}
+
+.licenseText {
+  color: #cfcfcf;
+
+  font-size: 13px;
+  line-height: 1.3;
+
+  margin-bottom: 8px;
+}
+
+.trackCard .priceButton + .priceButton {
+  margin-top: 5px;
+}
+
+.downloadButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.navbar {
+  width: 100%;
+  position: relative;
+  z-index: 10;
+
+  background: #2f2e2e;
+
+  border-bottom: 1px solid #242424;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+}
+
+.topRow {
+  width: 100%;
+  max-width: 1440px;
+  height: 52px;
+
+  margin: 0 auto;
+  padding: 0 40px;
+
+  display: grid;
+  grid-template-columns: 1fr 390px 1fr;
+  align-items: center;
+  gap: 20px;
+}
+
+.logoBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  justify-self: start;
+  min-width: 0;
+}
+
+.dotsImg {
+  width: 24px;
+  object-fit: contain;
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+
+.logoFlashImg {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  flex-shrink: 0;
+
+  filter: drop-shadow(0 0 14px rgba(236, 98, 95, 0.22));
+}
+
+.brandImg {
+  height: 24px;
+  object-fit: contain;
+
+  filter: drop-shadow(0 0 16px rgba(236, 98, 95, 0.35));
+}
+
+.searchBox {
+  width: 100%;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 14px;
+
+  border-radius: 17px;
+  border: 1px solid #333;
+
+  background: #1a1a1a;
+
+  transition: 0.2s ease;
+}
+
+.searchBox:focus-within {
+  border-color: rgba(236, 98, 95, 0.35);
+  box-shadow: 0 0 0 1px rgba(236, 98, 95, 0.05);
+}
+
+.searchImg {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+
+  margin-right: 9px;
+  flex-shrink: 0;
+
+  opacity: 0.75;
+}
+
+.searchBox input {
+  width: 100%;
+
+  background: transparent;
+  border: none;
+  outline: none;
+
+  color: white;
+  font-size: 13px;
+}
+
+.searchBox input::placeholder {
+  color: #777;
+}
+
+.rightMenu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+
+  justify-self: end;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  cursor: pointer;
+
+  padding: 5px 8px;
+  border-radius: 16px;
+
+  transition: 0.2s ease;
+}
+
+.menuItem:hover {
+  background: #262525;
+}
+
+.userImg,
+.cartImg {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+
+  cursor: pointer;
+}
+
+.arrowImg {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+
+  cursor: pointer;
+  opacity: 0.75;
+
+  transition: 0.2s ease;
+}
+
+.menuItem:hover .arrowImg {
+  opacity: 1;
+  transform: translateY(1px);
+}
+
+.userBlock {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: 44px;
+  right: 0;
+
+  width: 180px;
+
+  padding: 8px 0;
+
+  border-radius: 16px;
+  border: 1px solid #333;
+
+  background: linear-gradient(
+    145deg,
+    rgba(38, 37, 37, 0.98),
+    rgba(14, 14, 14, 0.98)
+  );
+
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+
+  z-index: 999;
+  overflow: hidden;
+}
+
+.dropdown a,
+.dropdown button {
+  width: 100%;
+  display: block;
+
+  padding: 11px 15px;
+
+  background: transparent;
+  border: none;
+
+  color: #d8d8d8;
+  text-align: left;
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.dropdown a:hover,
+.dropdown button:hover {
+  background: rgba(236, 98, 95, 0.1);
+  color: #ec625f;
+}
+
+.authLinks {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 7px 13px;
+
+  border-radius: 18px;
+  border: 1px solid #333;
+
+  background: #1a1a1a;
+
+  color: #bdbdbd;
+  font-size: 12px;
+
+  transition: 0.2s ease;
+}
+
+.authLinks:hover {
+  border-color: #ec625f;
+  box-shadow: 0 0 0 3px rgba(236, 98, 95, 0.1);
+}
+
+.authLinks a {
+  color: #d8d8d8;
+  text-decoration: none;
+  font-weight: 600;
+
+  transition: 0.2s ease;
+}
+
+.authLinks a:hover {
+  color: #ec625f;
+}
+
+.authLinks span {
+  color: #777;
+}
+
+.bottomRow {
+  height: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 42px;
+
+  background: #242424;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.bottomRow a {
+  position: relative;
+
+  color: #bdbdbd;
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition: 0.2s ease;
+}
+
+.bottomRow a:hover {
+  color: #ec625f;
+}
+
+.logoutBtn {
+  position: absolute;
+  right: 40px;
+
+  padding: 5px 14px;
+
+  border-radius: 14px;
+  border: 1px solid #ec625f;
+
+  background: transparent;
+  color: #bdbdbd;
+
+  cursor: pointer;
+}
+
+/* =========================
+   АДАПТИВ MY TRACKS
+   ========================= */
+
+@media (max-width: 1320px) {
+  .myTracksPage { padding: 0 24px 40px; gap: 18px; }
+  .trackGridMyTracks { grid-template-columns: repeat(5, 1fr); }
+}
+
+@media (max-width: 1050px) {
+  .trackGridMyTracks { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 880px) {
+  .myTracksPage {
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 30px;
+    padding: 0 20px 36px;
+  }
+
+  .profileCard {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 20px;
+    border-radius: 18px;
+  }
+
+  .profileAvatar {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .profileName {
+    flex: 1;
+    margin: 0 18px;
+    font-size: 22px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .profileButton {
+    width: 160px;
+    height: 40px;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .purchasesSection { width: 100%; }
+  .trackGridMyTracks { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 620px) {
+  .myTracksPage { padding: 0 16px 32px; }
+  .trackGridMyTracks { grid-template-columns: repeat(2, 1fr); }
+
+  .profileCard { gap: 12px; padding: 16px; }
+  .profileAvatar { width: 62px; height: 62px; }
+  .profileName { margin: 0; font-size: 19px; }
+  .profileButton { width: 130px; height: 36px; font-size: 12px; }
+}
+
+@media (max-width: 420px) {
+  .myTracksPage { padding: 0 12px 28px; }
+  .trackGridMyTracks { grid-template-columns: 1fr; }
+
+  .profileCard {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 16px;
+  }
+
+  .profileAvatar { width: 86px; height: 86px; margin-bottom: 12px; }
+  .profileName { flex: none; margin: 0 0 12px; text-align: center; font-size: 22px; }
+  .profileButton { width: 100%; max-width: 230px; }
+}

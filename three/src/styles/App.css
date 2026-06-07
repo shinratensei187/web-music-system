@@ -1,0 +1,561 @@
+/* Обнуляющий стиль */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ── Custom scrollbar ── */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2e2e2e #111111;
+}
+
+/* Chrome / Edge / Safari */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111111;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2e2e2e;
+  border-radius: 10px;
+  border: 1px solid #1a1a1a;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ec625f;
+}
+
+::-webkit-scrollbar-corner {
+  background: #111111;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.App {
+  width: 100%;
+  max-width: 1440px;
+}
+
+.post {
+    display: flex;
+    padding: 15px;
+    border: 2px solid teal;
+    margin-top: 15px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post__btns {
+    display: flex;
+}
+
+/* ПОЯВА (Enter) та ПЕРШЕ ЗАВАНТАЖЕННЯ (Appear) */
+.post-enter, .post-appear {
+    opacity: 0;
+    transform: translateX(-50px); /* Пост випливає зліва */
+}
+
+.post-enter-active, .post-appear-active {
+    opacity: 1;
+    transform: translateX(0px);
+    transition: opacity 500ms ease-in, transform 500ms ease-out;
+}
+
+/* ВИДАЛЕННЯ (Exit) */
+.post-exit {
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+.post-exit-active {
+    opacity: 0;
+    transform: translateX(50px); /* Пост уходить вправо */
+    transition: opacity 500ms ease-in, transform 500ms ease-in;
+}
+
+.page__wrapper{
+    margin-top: 30px;
+    display: flex;
+}
+
+.page {
+    padding: 10px;
+    border: 1px solid teal;
+    cursor: pointer;
+}
+
+.page__current {
+    border: 2px solid orange;
+    font-weight: bold;
+}
+
+.navbar {
+    height: 50px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    background: lightgrey;
+}
+
+.navbar__links {
+    margin-left: auto;
+}
+
+.trackCard {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 230px;
+  margin: 0 auto;
+
+  padding: 10px;
+  border-radius: 12px;
+
+  background: transparent;
+
+  min-height: 300px;
+  transition: all 0.25s ease;
+}
+
+.trackCard:hover {
+  background: #2b2b2b; /* 👈 твій поточний фон */
+  transform: translateY(-3px); /* легкий підйом */
+}
+
+.trackCard:hover .playButton {
+  opacity: 1;
+}
+
+.playButton.isPlaying {
+  opacity: 1;
+}
+
+.trackImageBox {
+  position: relative;
+  width: 210px;
+  height: 210px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.trackImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.trackGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px; /* 👈 між карточками */
+  padding: 0 20px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+
+
+.trackImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+.priceButton {
+  width: 100%;
+  height: 34px;
+
+  border-radius: 18px;
+  border: 1px solid transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  background:
+    linear-gradient(#2b2b2b, #2b2b2b) padding-box,
+    linear-gradient(90deg, #ffffff 0%, #ec625f 100%) border-box;
+
+  cursor: pointer;
+}
+
+.priceButton:hover {
+    color: white;
+    background:
+    linear-gradient(#3a3a3a, #3a3a3a) padding-box,
+    linear-gradient(90deg, #ffffff 0%, #ff5f5f 100%) border-box;
+}
+
+
+.playButton {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1.2);
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  transition: all 0.25s ease;
+
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  padding: 0;
+}
+
+.playIcon {
+  font-size: 24px;
+  line-height: 1;
+  transform: translateX(2px); /* тільки трикутник трохи вправо */
+}
+
+.pauseIcon {
+  font-size: 24px;
+  line-height: 1;
+  transform: translateX(0);
+  transform: translateY(-1px); /* пауза рівно по центру */
+}
+
+.playButton:hover {
+  background: rgba(236, 98, 95, 0.9);
+  transform: translate(-50%, -50%) scale(1.5);
+  box-shadow: 0 0 12px rgba(236, 98, 95, 0.7);
+}
+
+.playButton:hover .playIcon,
+.playButton:hover .pauseIcon {
+  font-size: 28px;
+}
+
+.priceText {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.priceIcon {
+
+
+  width: 16px;
+  height: 16px;
+
+  filter: brightness(0) invert(1);
+
+  pointer-events: none; /* 👈 щоб клік йшов по кнопці */
+}
+
+.priceContent {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* 👈 відстань між іконкою і текстом */
+}
+
+.trackTitleWrapper {
+  width: 100%;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+
+.trackCard:hover .trackTitleScroll {
+  animation: titleCircle 6s linear infinite;
+}
+
+@keyframes scrollTitle {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.trackTitle span {
+  flex-shrink: 0;
+}
+
+.trackTitleTrack {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  gap: 40px;
+
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.trackTitleTrack span {
+  flex-shrink: 0;
+}
+
+@keyframes titleCircle {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 20px));
+  }
+}
+
+/* =========================
+   АДАПТИВ КАТАЛОГУ ТРЕКІВ
+   ========================= */
+
+@media (max-width: 1320px) {
+  .App {
+    width: 100%;
+    max-width: 1180px;
+  }
+
+  .trackGrid {
+    grid-template-columns: repeat(5, 220px);
+    justify-content: center;
+    gap: 14px;
+    padding: 0 24px;
+  }
+
+  .trackCard {
+    width: 220px;
+    max-width: 220px;
+  }
+
+  .trackImageBox {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .App {
+    max-width: 960px;
+  }
+
+  .trackGrid {
+    grid-template-columns: repeat(4, 220px);
+    justify-content: center;
+    gap: 16px;
+    padding: 0 22px;
+  }
+
+  .trackCard {
+    width: 220px;
+    max-width: 220px;
+  }
+
+  .trackImageBox {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 980px) {
+  .App {
+    max-width: 820px;
+  }
+
+  .trackGrid {
+    grid-template-columns: repeat(3, 210px);
+    justify-content: center;
+    gap: 14px;
+    padding: 0 20px;
+  }
+
+  .trackCard {
+    width: 210px;
+    max-width: 210px;
+  }
+
+  .trackImageBox {
+    width: 190px;
+    height: 190px;
+  }
+
+  .trackTitleTrack {
+    font-size: 15px;
+  }
+
+  .priceButton {
+    height: 33px;
+  }
+}
+
+@media (max-width: 760px) {
+  .App {
+    max-width: 560px;
+  }
+
+  .trackGrid {
+    grid-template-columns: repeat(2, 220px);
+    justify-content: center;
+    gap: 16px;
+    padding: 0 18px;
+  }
+
+  .trackCard {
+    width: 220px;
+    max-width: 220px;
+  }
+
+  .trackImageBox {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 620px) {
+  .App {
+    max-width: 480px;
+  }
+
+  .trackGrid {
+    grid-template-columns: repeat(2, 200px);
+    justify-content: center;
+    gap: 14px;
+    padding: 0 16px;
+  }
+
+  .trackCard {
+    width: 200px;
+    max-width: 200px;
+    min-height: 285px;
+  }
+
+  .trackImageBox {
+    width: 180px;
+    height: 180px;
+  }
+
+  .trackTitleTrack {
+    font-size: 14px;
+  }
+
+  .priceText {
+    font-size: 15px;
+  }
+
+  .priceButton {
+    height: 32px;
+  }
+}
+
+@media (max-width: 520px) {
+  .App {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .trackGrid {
+    grid-template-columns: 230px;
+    justify-content: center;
+    gap: 14px;
+    padding: 0 12px;
+  }
+
+  .trackCard {
+    width: 230px;
+    max-width: 230px;
+    min-height: 300px;
+  }
+
+  .trackImageBox {
+    width: 210px;
+    height: 210px;
+  }
+
+  .trackTitleTrack {
+    font-size: 16px;
+  }
+
+  .priceButton {
+    height: 34px;
+  }
+}
+
+.trackTitleWrapper {
+  width: 100%;
+  max-width: 100%;
+
+  margin: 10px 0;
+
+  overflow: hidden;
+  white-space: nowrap;
+
+  position: relative;
+}
+
+.trackTitleText {
+  display: inline-block;
+
+  max-width: 100%;
+
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  transform: translateX(0);
+}
+
+@keyframes trackTitleMarquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(0);
+  }
+
+  75% {
+    transform: translateX(-45%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.priceTitle {
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+}

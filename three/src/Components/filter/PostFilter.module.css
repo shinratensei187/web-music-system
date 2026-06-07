@@ -1,0 +1,306 @@
+.filterBar {
+  margin-top: 30px;
+  margin-bottom: 10px;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+
+  padding: 10px 20px;
+
+  background: transparent !important;
+  backdrop-filter: none;
+
+  position: relative;
+  z-index: 20;
+}
+
+.filterItem {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: auto;
+  min-width: max-content;
+}
+
+.filterButton {
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+
+  padding: 0;
+
+  border: none;
+  outline: none;
+  background: transparent;
+
+  color: #bdbdbd;
+  font-size: 14px;
+  font-weight: 400;
+
+  cursor: pointer;
+  white-space: nowrap;
+
+  transition: 0.2s ease;
+}
+
+.filterButton:hover,
+.filterButton.active {
+  color: #fff;
+}
+
+/* ── applied (non-default value set) ── */
+.filterButtonApplied {
+  color: #ec625f;
+  font-weight: 600;
+}
+
+.filterButtonApplied::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #ec625f;
+  border-radius: 2px;
+  opacity: 0.7;
+}
+
+.filterButtonApplied:hover {
+  color: #ff7a77;
+}
+
+.arrow {
+  width: 10px;
+  height: 10px;
+
+  object-fit: contain;
+  opacity: 0.75;
+
+  transition: 0.2s ease;
+  flex-shrink: 0;
+}
+
+.filterButton:hover .arrow,
+.filterButton.active .arrow {
+  opacity: 1;
+}
+
+.filterButton.active .arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  top: 38px;
+  left: 0;
+
+  width: 190px;
+  max-height: 260px;
+
+  padding: 8px 0;
+
+  border-radius: 16px;
+  border: 1px solid #333;
+
+  background: linear-gradient(
+    145deg,
+    rgba(38, 37, 37, 0.98),
+    rgba(14, 14, 14, 0.98)
+  );
+
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+
+  z-index: 999;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.dropdownItem {
+  width: 100%;
+
+  display: block;
+
+  padding: 11px 15px;
+
+  background: transparent;
+  border: none;
+
+  color: #d8d8d8;
+  text-align: left;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.dropdownItem:hover {
+  background: rgba(236, 98, 95, 0.1);
+  color: #ec625f;
+}
+
+.dropdownItem.selected {
+  color: #ec625f;
+  background: rgba(236, 98, 95, 0.08);
+}
+
+.clearBtn {
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0;
+
+  border: none;
+  outline: none;
+  background: transparent;
+
+  color: #bdbdbd;
+  font-size: 14px;
+  font-weight: 400;
+
+  cursor: pointer;
+  white-space: nowrap;
+
+  transition: 0.2s ease;
+}
+
+.clearBtn:hover {
+  color: #ec625f;
+  text-shadow: 0 0 10px rgba(236, 98, 95, 0.45);
+}
+
+/* ── Range slider dropdown ── */
+
+.rangeDropdown {
+  width: 230px;
+  padding: 18px 16px 14px;
+}
+
+.rangeSlider {
+  width: 100%;
+}
+
+.rangeTrack {
+  position: relative;
+  height: 4px;
+  background: #333;
+  border-radius: 4px;
+  margin: 16px 0 6px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.rangeFill {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: #ec625f;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.rangeThumb {
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ffffff;
+  transform: translate(-50%, -50%);
+  cursor: grab;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  z-index: 2;
+}
+
+.rangeThumb:hover {
+  transform: translate(-50%, -50%) scale(1.25);
+  box-shadow: 0 0 0 4px rgba(236, 98, 95, 0.22);
+}
+
+.dragging {
+  cursor: grabbing;
+  transform: translate(-50%, -50%) scale(1.3);
+  box-shadow: 0 0 0 5px rgba(236, 98, 95, 0.3);
+}
+
+.rangeLabels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  color: #bdbdbd;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dropdown::-webkit-scrollbar-thumb {
+  background: #3a3a3a;
+  border-radius: 10px;
+}
+
+.dropdown::-webkit-scrollbar-thumb:hover {
+  background: #ec625f;
+}
+
+/* =========================
+   АДАПТИВ
+   ========================= */
+
+@media (max-width: 900px) {
+  .filterBar {
+    gap: 22px;
+  }
+}
+
+@media (max-width: 650px) {
+  .filterBar {
+    padding: 10px 12px;
+    gap: 16px;
+  }
+
+  .filterItem {
+    width: calc(50% - 8px);
+    min-width: 0;
+  }
+
+  .filterButton {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .dropdown {
+    width: 100%;
+  }
+
+  .clearBtn {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+@media (max-width: 420px) {
+  .filterItem {
+    width: 100%;
+  }
+}

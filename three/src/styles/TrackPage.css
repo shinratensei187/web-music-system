@@ -1,0 +1,641 @@
+/* Глобально для блоку (або краще додати до скидання стилів *) */
+.trackPage * {
+  box-sizing: border-box;
+}
+
+.adminBackBar {
+  position: fixed;
+  top: 100px;
+  left: 24px;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: 1px solid #333;
+
+  background: rgba(20, 20, 20, 0.92);
+  backdrop-filter: blur(8px);
+  color: #e0e0e0;
+
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.adminBackBar:hover {
+  border-color: #ec625f;
+  color: #ec625f;
+  transform: translateX(-2px);
+}
+
+.trackPage {
+  max-width: 1440px; /* Використовуємо max-width замість жорсткого width */
+  width: 100%;
+  margin: 0 auto;
+  min-height: calc(100vh - 84px);
+  padding: 35px 20px;
+
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+
+  color: white;
+}
+
+/* Ліва картка */
+.trackInfoCard {
+  flex: 0 0 280px; /* Забороняємо звужуватись/розширюватись, фіксуємо на 280px */
+  padding: 10px;
+
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+
+  background: linear-gradient(
+    145deg,
+    #313131 0%,
+    #2a2a2a 55%,
+    #242424 100%
+  );
+
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25);
+  transition: 0.25s ease;
+}
+
+.trackInfoCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(236, 98, 95, 0.25);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(236, 98, 95, 0.05);
+}
+
+/* Картинка */
+.trackPageImageBox {
+  width: 100%; /* Гумова ширина всередині картки */
+  aspect-ratio: 1 / 1; /* Завжди ідеальний квадрат, не потрібні фіксовані height */
+  position: relative;
+
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 0 auto;
+
+  background: #1a1a1a;
+}
+
+.trackPageImageBox::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+
+  opacity: 0;
+  transition: 0.25s ease;
+}
+
+.trackPageImageBox:hover::after {
+  opacity: 1;
+}
+
+.trackPageImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.35s ease;
+}
+
+.trackPageImageBox:hover .trackPageImage {
+  transform: scale(1.06);
+  filter: brightness(0.85);
+}
+
+/* Play button */
+.trackPagePlayButton {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+
+  transform: translate(-50%, -50%) scale(1.15);
+
+  width: 46px;
+  height: 46px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: rgba(0, 0, 0, 0.62);
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  opacity: 0;
+  transition: 0.25s ease;
+
+  backdrop-filter: blur(5px);
+  cursor: pointer;
+}
+
+.trackPageImageBox:hover .trackPagePlayButton {
+  opacity: 1;
+}
+
+.trackPagePlayIcon {
+  font-size: 23px;
+  line-height: 1;
+  transform: translateX(2px);
+}
+
+.trackPagePauseIcon {
+  font-size: 23px;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+.trackPagePlayButton {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.trackPagePlayButton:hover,
+.trackPagePlayButton:focus-visible {
+  background: rgba(236, 98, 95, 0.92);
+  transform: translate(-50%, -50%) scale(1.5);
+
+  box-shadow:
+    0 0 18px rgba(236, 98, 95, 0.65),
+    0 0 0 4px rgba(236, 98, 95, 0.12);
+}
+
+.trackPagePlayButton.isPlaying {
+  opacity: 1;
+}
+
+/* Назва */
+.trackPageTitle {
+  width: 100%;
+  margin: 14px 0 12px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+
+  transition: 0.2s ease;
+}
+
+.trackInfoCard:hover .trackPageTitle {
+  color: #ec625f;
+  text-shadow: 0 0 12px rgba(236, 98, 95, 0.25);
+}
+
+/* Divider */
+.infoDivider {
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #262525 20%,
+    rgba(236, 98, 95, 0.45) 50%,
+    #262525 80%,
+    transparent 100%
+  );
+
+  margin: 10px 0 14px;
+}
+
+/* Info */
+.infoTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #bdbdbd;
+
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 13px;
+  color: #bdbdbd;
+
+  margin-bottom: 8px;
+  padding: 6px 8px;
+
+  border-radius: 10px;
+
+  transition: 0.2s ease;
+}
+
+.infoRow:hover {
+  background: #262525;
+}
+
+.infoRow span:first-child {
+  color: #777;
+}
+
+.infoRow span:last-child {
+  color: white;
+  text-align: right;
+  font-weight: 600;
+}
+
+/* Button */
+.addCartBtn {
+  width: 100%;
+  height: 36px;
+
+  margin-top: 14px;
+
+  border-radius: 18px;
+  border: 1px solid transparent;
+
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+
+  background:
+    linear-gradient(#2b2b2b, #2b2b2b) padding-box,
+    linear-gradient(90deg, #ffffff 0%, #ec625f 100%) border-box;
+
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.addCartBtn:hover {
+  transform: translateY(-1px);
+
+  background:
+    linear-gradient(#343434, #343434) padding-box,
+    linear-gradient(90deg, #ffffff 0%, #ff5f5f 100%) border-box;
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.3),
+    0 0 0 4px rgba(236, 98, 95, 0.08);
+}
+
+.addCartBtn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.trackAuthHint {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.trackAuthBtn {
+  flex: 1;
+  padding: 8px 0;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background: transparent;
+  color: #bdbdbd;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.trackAuthBtn:hover {
+  border-color: rgba(236, 98, 95, 0.5);
+  color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(236, 98, 95, 0.1);
+}
+
+/* Коментарі */
+.commentsBlock {
+  min-height: 330px;
+
+  background: linear-gradient(
+    145deg,
+    #313131 0%,
+    #2b2b2b 60%,
+    #252525 100%
+  );
+
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+
+  padding: 22px;
+
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25);
+  transition: 0.25s ease;
+}
+
+.commentsBlock:hover {
+  border-color: rgba(236, 98, 95, 0.18);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.33),
+    0 0 0 1px rgba(236, 98, 95, 0.04);
+}
+
+.commentsBlock h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 25px;
+
+  color: white;
+
+  transition: 0.2s ease;
+}
+.commentsBlock:focus-within h2 {
+  color: #ec625f;
+  text-shadow: 0 0 12px rgba(236, 98, 95, 0.25);
+}
+
+/* Input коментаря */
+.commentInput {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 0 0 14px 0;
+  border-bottom: 2px solid #262525;
+  transition: 0.2s ease;
+}
+
+.commentInput:focus-within {
+  border-bottom-color: rgba(236, 98, 95, 0.65);
+}
+
+.commentAvatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid #333;
+  background: #222;
+}
+
+.commentInput input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 14px;
+}
+
+.commentInput input::placeholder {
+  color: #8a8a8a;
+}
+
+.commentInput:focus-within input::placeholder {
+  color: #777;
+}
+
+.commentInput button {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  border: 1px solid #333;
+
+  background: #262525;
+  color: #bdbdbd;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.commentInput button:hover:not(:disabled) {
+  background: #ec625f;
+  border-color: #ec625f;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 0 14px rgba(236, 98, 95, 0.45);
+}
+
+.commentInput button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* Comments list */
+.commentsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.commentsEmpty {
+  color: #666;
+  font-size: 14px;
+  text-align: center;
+  padding: 16px 0;
+}
+
+.commentItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  position: relative;
+}
+
+.commentBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.commentNick {
+  font-size: 14px;
+  font-weight: 700;
+  color: #e0e0e0;
+}
+
+.commentText {
+  font-size: 16px;
+  color: #a0a0a0;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.commentDeleteBtn {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid #333;
+  background: transparent;
+  color: #666;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: 0.2s ease;
+}
+
+.commentItem:hover .commentDeleteBtn {
+  opacity: 1;
+}
+
+.commentDeleteBtn:hover {
+  background: rgba(236, 98, 95, 0.18);
+  border-color: rgba(236, 98, 95, 0.6);
+  color: #ec625f;
+}
+
+/* Right column wrapper */
+.trackRightCol {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Description block */
+.trackDescription {
+  background: linear-gradient(
+    145deg,
+    #313131 0%,
+    #2b2b2b 60%,
+    #252525 100%
+  );
+
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 22px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25);
+  transition: 0.25s ease;
+}
+
+.trackDescription:hover {
+  border-color: rgba(236, 98, 95, 0.18);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.33),
+    0 0 0 1px rgba(236, 98, 95, 0.04);
+}
+
+.trackDescription h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 25px;
+  transition: 0.2s ease;
+}
+
+.trackDescription:hover h2 {
+  color: #ec625f;
+  text-shadow: 0 0 12px rgba(236, 98, 95, 0.25);
+}
+
+.trackDescription p {
+  font-size: 14px;
+  color: #9e9e9e;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+/* ========== АДАПТИВ ========== */
+
+/* Тобі більше не потрібен брейкпоінт на 1450px, тому що ми використовуємо max-width: 1440px та flex: 1 */
+
+@media (max-width: 900px) {
+  .trackPage {
+    flex-direction: column;
+    align-items: stretch; /* Розтягуємо елементи або дозволяємо їм займати центр */
+  }
+
+  .trackInfoCard {
+    flex: auto;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .trackRightCol {
+    width: 100%;
+  }
+
+  /* Висоту .trackPageImageBox тут міняти не треба, бо є aspect-ratio: 1/1, вона сама стане квадратом відповідно до ширини картки */
+}
+
+.cartMessage {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  z-index: 9999;
+
+  min-width: 280px;
+  max-width: 420px;
+
+  padding: 14px 22px;
+  border-radius: 14px;
+
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+
+  color: #ffffff;
+  backdrop-filter: blur(12px);
+
+  animation: cartMessageShow 0.3s ease;
+}
+
+.cartMessage.success {
+  background: rgba(45, 180, 90, 0.18);
+  border: 1px solid rgba(45, 180, 90, 0.55);
+  box-shadow:
+    0 0 18px rgba(45, 180, 90, 0.25),
+    0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.cartMessage.error {
+  background: rgba(236, 98, 95, 0.18);
+  border: 1px solid rgba(236, 98, 95, 0.6);
+  box-shadow:
+    0 0 18px rgba(236, 98, 95, 0.28),
+    0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@keyframes cartMessageShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
