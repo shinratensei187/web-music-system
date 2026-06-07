@@ -62,20 +62,15 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
     CORSMiddleware,
-
     allow_origins=[
         "http://localhost:3000",
         "http://127.0.0.1:3000",
-        "https://web-music-system-fugh0n7vl-anton22.vercel.app",
     ],
-
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-
 
 @app.get("/")
 def root():
@@ -199,7 +194,7 @@ def upload_avatar(
     path = f"uploads/images/{filename}"
     with open(path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
-    current_user.avatar_url = f"http://127.0.0.1:8001/{path}"
+    current_user.avatar_url = f"{BACKEND_URL}/{path}"
     db.commit()
     db.refresh(current_user)
     return current_user
@@ -595,7 +590,7 @@ def create_track_with_files(
         with open(image_path, "wb") as buffer:
             shutil.copyfileobj(image_file.file, buffer)
 
-        image_url = f"http://127.0.0.1:8001/{image_path}"
+        image_url = f"{BACKEND_URL}/{image_path}"
 
     new_track = Track(
         title=title,
@@ -605,8 +600,8 @@ def create_track_with_files(
         key=key,
         price=price,
         duration=duration,
-        demo_file_url=f"http://127.0.0.1:8001/{demo_path}",
-        full_file_url=f"http://127.0.0.1:8001/{full_path}",
+        demo_file_url=f"{BACKEND_URL}/{demo_path}",
+        full_file_url=f"{BACKEND_URL}/{full_path}",
         image_url=image_url,
         description=description
     )
@@ -851,7 +846,7 @@ def download_track(
         raise HTTPException(status_code=404, detail="Файл не знайдено")
 
     # Extract relative path from the stored URL
-    base_url = "http://127.0.0.1:8001/"
+    base_url = f"{BACKEND_URL}/"
     relative_path = track.full_file_url.replace(base_url, "")
 
     # Absolute path based on main.py location
