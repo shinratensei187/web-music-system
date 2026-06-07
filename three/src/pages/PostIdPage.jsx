@@ -6,7 +6,7 @@ import CommentService from '../API/CommentService'
 import API from '../API/api'
 import Loader from '../Components/UI/loader/Loader'
 import trackImage from '../image/trackImage.png'
-import userPlaceholder from '../image/trackImage.png'
+import userPlaceholder from '../image/userIcon.png'
 import { usePlayer } from '../context/PlayerContext'
 import { useCart } from '../context/CartContext'
 import { AuthContext } from '../context'
@@ -309,7 +309,7 @@ export default function PostIdPage() {
               maxLength={200}
             />
             <button type="submit" disabled={!commentText.trim() || commentLoading}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ transform: 'rotate(45deg)' }}>
                 <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
               </svg>
             </button>
