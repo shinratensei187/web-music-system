@@ -53,7 +53,7 @@ def run_migrations():
             )
         """))
         conn.commit()
-        
+
 os.makedirs("uploads", exist_ok=True)
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 
@@ -65,6 +65,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",
         "http://127.0.0.1:3000",
+        "https://web-music-system-fugh0n7vl-anton22.vercel.app",
     ],
 
     allow_credentials=True,
