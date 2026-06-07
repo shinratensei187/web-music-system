@@ -79,7 +79,7 @@ export default function Login() {
         if (response.data.user.role === 'admin') {
           navigate('/admin/tracks')
         } else {
-          navigate('/posts')
+          navigate('/')
         }
       }, 700)
     } catch (e) {
