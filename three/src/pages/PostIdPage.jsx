@@ -6,12 +6,23 @@ import CommentService from '../API/CommentService'
 import API from '../API/api'
 import Loader from '../Components/UI/loader/Loader'
 import trackImage from '../image/trackImage.png'
-import userPlaceholder from '../image/userIcon.png'
 import { usePlayer } from '../context/PlayerContext'
 import { useCart } from '../context/CartContext'
 import { AuthContext } from '../context'
 
 import '../styles/TrackPage.css'
+
+function UserAvatar({ src, alt = '', className }) {
+  if (src) return <img className={className} src={src} alt={alt} />
+  return (
+    <span className={className} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#2a2a2a', flexShrink: 0 }}>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#888" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+      </svg>
+    </span>
+  )
+}
 
 export default function PostIdPage() {
   const params = useParams()
@@ -297,11 +308,7 @@ export default function PostIdPage() {
           <h2>Коментарі</h2>
 
           <form className="commentInput" onSubmit={submitComment}>
-            <img
-              className="commentAvatar"
-              src={user?.avatar_url || userPlaceholder}
-              alt=""
-            />
+            <UserAvatar className="commentAvatar" src={user?.avatar_url} />
             <input
               placeholder="Поділіться своєю думкою..."
               value={commentText}
@@ -321,11 +328,7 @@ export default function PostIdPage() {
             )}
             {comments.map(comment => (
               <div className="commentItem" key={comment.id}>
-                <img
-                  className="commentAvatar"
-                  src={comment.user.avatar_url || userPlaceholder}
-                  alt={comment.user.nickname}
-                />
+                <UserAvatar className="commentAvatar" src={comment.user.avatar_url} alt={comment.user.nickname} />
                 <div className="commentBody">
                   <span className="commentNick">{comment.user.nickname}</span>
                   <p className="commentText">{comment.content}</p>
