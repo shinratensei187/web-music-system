@@ -653,12 +653,12 @@ def create_checkout_session(
             payment_method_types=["card"],
             line_items=line_items,
             mode="payment",
-            success_url="http://localhost:3000/payment-success",
-            cancel_url="http://localhost:3000/cart",
+            success_url="https://web-music-system-git-main-anton22.vercel.app/payment-success",
+            cancel_url="https://web-music-system-git-main-anton22.vercel.app/cart",
         )
 
         return {"url": session.url}
-
+    
     except HTTPException:
         raise
 
