@@ -25,6 +25,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 stripe.api_key = os.environ["STRIPE_SECRET_KEY"]
+BACKEND_URL = os.environ.get("BACKEND_URL", "http://127.0.0.1:8001")
 
 Base.metadata.create_all(bind=engine)
 
