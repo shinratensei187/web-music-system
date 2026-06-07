@@ -53,7 +53,8 @@ def run_migrations():
             )
         """))
         conn.commit()
-
+        
+os.makedirs("uploads", exist_ok=True)
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 
 from fastapi.middleware.cors import CORSMiddleware
