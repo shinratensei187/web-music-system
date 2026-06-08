@@ -55,8 +55,11 @@ def run_migrations():
         """))
         conn.commit()
 
-os.makedirs("uploads", exist_ok=True)
-app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
+os.makedirs("uploads/demos", exist_ok=True)
+os.makedirs("uploads/images", exist_ok=True)
+os.makedirs("uploads/tracks", exist_ok=True)
+app.mount("/uploads/demos", StaticFiles(directory="uploads/demos"), name="uploads_demos")
+app.mount("/uploads/images", StaticFiles(directory="uploads/images"), name="uploads_images")
 
 from fastapi.middleware.cors import CORSMiddleware
 
